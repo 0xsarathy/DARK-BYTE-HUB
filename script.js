@@ -513,3 +513,98 @@ function downloadCertificate(course) {
 
   alert("🎉 Certificate downloaded for " + course.toUpperCase());
 }
+/* ===============================
+   🔐 AUTH STATE (SINGLE SOURCE)
+================================*/
+
+function isLoggedIn() {
+  return currentUser !== null;
+}
+
+/* ===============================
+   NAV FIX – NO LOGIN BLOCK
+================================*/
+
+function bindNavigation() {
+  document.querySelectorAll(".nav-link[data-section]").forEach(link => {
+    link.addEventListener("click", e => {
+      e.preventDefault();
+      goToSection(link.dataset.section);
+    });
+  });
+
+  document.querySelectorAll(".login-trigger").forEach(btn => {
+    btn.addEventListener("click", e => {
+      e.preventDefault();
+      showLoginModal();
+    });
+  });
+}
+
+/* ===============================
+   🎓 CERTIFICATE DOWNLOAD (ONLY HERE LOGIN)
+================================*/
+
+function downloadCertificate(course) {
+  if (!isLoggedIn()) {
+    showLoginModal();
+    return;
+  }
+
+  generateFakeCertificate(course);
+}
+
+/* ===============================
+   🧾 FAKE CERTIFICATE GENERATOR
+================================*/
+
+function generateFakeCertificate(course) {
+  const certName = {
+    web: "Web Pentesting Certified",
+    network: "Network Pentesting Certified",
+    redteam: "Red Team Operator",
+    blue: "Blue Team Defender"
+  };
+
+  alert(`
+🎉 CERTIFICATE ISSUED
+
+Agent: ${currentUser.name}
+Course: ${certName[course]}
+Year: 2026
+
+(Status: Demo Certificate)
+  `);
+}
+
+/* ===============================
+   LOGIN SUCCESS FIX
+================================*/
+
+function loginSuccess() {
+  const modal = document.getElementById("loginModal");
+  modal.classList.remove("active");
+  modal.style.display = "none";
+
+  document.getElementById("userProfile").style.display = "flex";
+  document.getElementById("userName").textContent = currentUser.name;
+  document.getElementById("guestStats").style.display = "none";
+
+  alert(`✅ Welcome ${currentUser.name}`);
+}
+
+/* ===============================
+   DEMO LOGIN FIX
+================================*/
+
+function demoLogin(e) {
+  e.preventDefault();
+
+  currentUser = {
+    name: "Agent 001 🔥",
+    email: "agent001@darkbytehub.com",
+    role: "Elite"
+  };
+
+  loginSuccess();
+}
