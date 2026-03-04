@@ -597,3 +597,46 @@ body {
     position: relative; 
     display: block !important; /* ✅ ONLY ACTIVE ONE SHOW */
 }
+/* 🔥 ADD THIS TO END OF YOUR style.css - CRITICAL FIXES */
+.menu-toggle { 
+    display: flex !important; 
+    flex-direction: column; 
+    gap: 4px; 
+    cursor: pointer; 
+    z-index: 1001 !important;
+}
+
+.menu-toggle span { 
+    width: 25px !important; 
+    height: 3px !important; 
+    background: var(--primary) !important; 
+    border-radius: 2px !important; 
+    transition: 0.3s !important; 
+}
+
+.mobile-menu {
+    position: fixed !important; 
+    top: 0 !important; 
+    right: -100% !important; 
+    width: 100% !important; 
+    height: 100vh !important;
+    background: rgba(5,10,24,0.98) !important; 
+    backdrop-filter: blur(20px) !important;
+    z-index: 999 !important; 
+    transition: right 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55) !important;
+}
+
+.mobile-menu.active { 
+    right: 0 !important; 
+}
+
+/* DESKTOP HIDE HAMBURGER */
+@media (min-width: 769px) {
+    .menu-toggle { display: none !important; }
+}
+
+/* MOBILE SHOW HAMBURGER */
+@media (max-width: 768px) {
+    .menu-toggle { display: flex !important; }
+    .nav-desktop { display: none !important; }
+}
