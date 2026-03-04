@@ -1,4 +1,4 @@
-// 🔥 DARK BYTE HUB v13 - CLEAN NAVBAR + HISTORY + MOBILE MENU
+// 🔥 DARK BYTE HUB v13 - AGENT 001 DEMO LOGIN FIXED
 
 let currentUser = null;
 let particles = [];
@@ -60,7 +60,6 @@ function initNavbar() {
   });
 
   // AUTO CLOSE ON RESIZE
-
   window.addEventListener("resize", () => {
     if (window.innerWidth > 768) {
       mobileMenu.classList.remove("active");
@@ -70,7 +69,6 @@ function initNavbar() {
   });
 
   // CLOSE WHEN CLICK NAV
-
   document.querySelectorAll(".mobile-nav .nav-link").forEach((link) => {
     link.addEventListener("click", () => {
       mobileMenu.classList.remove("active");
@@ -128,7 +126,6 @@ function goToSection(sectionId) {
   }
 
   // CLOSE MOBILE MENU
-
   const mobileMenu = document.getElementById("mobileMenu");
   const toggle = document.getElementById("menuToggle");
 
@@ -181,7 +178,7 @@ function bindNavigation() {
 }
 
 /* ===============================
-   LOGIN SYSTEM
+   🔥 LOGIN SYSTEM - AGENT 001 FIXED
 ================================*/
 
 function bindForms() {
@@ -206,16 +203,48 @@ function handleLogin(e) {
   }
 }
 
+// 🔥 TRY DEMO ACCESS - AGENT 001
 function demoLogin(e) {
   e.preventDefault();
+  
+  // AGENT 001 LOGIN ✅
+  currentUser = { 
+    name: "Agent 001 🔥", 
+    email: "agent001@darkbytehub.com",
+    role: "Elite Pentester"
+  };
 
-  currentUser = { name: "Agent 001 🔥", email: "demo@darkbytehub.com" };
+  // CLOSE MODAL
+  const modal = document.getElementById("loginModal");
+  if (modal) {
+    modal.classList.remove("active");
+    modal.style.display = "none";
+  }
 
-  loginSuccess();
+  // SHOW USER PROFILE
+  document.getElementById("userProfile").style.display = "flex";
+  document.getElementById("userName").textContent = currentUser.name;
+
+  // HIDE GUEST STATS
+  document.getElementById("guestStats").style.display = "none";
+
+  // UPDATE DASHBOARD ACCESS
+  updateDashboardAccess();
+
+  // SUCCESS MESSAGE
+  setTimeout(() => {
+    alert(`✅ AGENT 001 ACCESS GRANTED!\nWelcome Elite Pentester\n${currentUser.email}`);
+  }, 300);
+
+  document.body.style.overflow = "auto";
 }
 
 function loginSuccess() {
-  document.getElementById("loginModal").classList.remove("active");
+  const modal = document.getElementById("loginModal");
+  if (modal) {
+    modal.classList.remove("active");
+    modal.style.display = "none";
+  }
 
   document.body.style.overflow = "auto";
 
@@ -226,7 +255,9 @@ function loginSuccess() {
 
   updateDashboardAccess();
 
-  alert(`✅ ACCESS GRANTED!\nWelcome ${currentUser.name}`);
+  setTimeout(() => {
+    alert(`✅ ACCESS GRANTED!\nWelcome ${currentUser.name}`);
+  }, 300);
 }
 
 function showLoginModal() {
@@ -241,6 +272,28 @@ function showLoginModal() {
   modal.style.display = "flex";
 
   document.body.style.overflow = "hidden";
+
+  // CLEAR FORM
+  document.getElementById("loginEmail").value = "";
+  document.getElementById("loginPassword").value = "";
+}
+
+function logout() {
+  currentUser = null;
+  
+  document.getElementById("userProfile").style.display = "none";
+  document.getElementById("guestStats").style.display = "flex";
+  document.getElementById("loginModal").style.display = "none";
+  
+  // RESET DASHBOARD SECTIONS
+  document.querySelectorAll(".section").forEach(sec => {
+    if (sec.id === "dashboard" || sec.id === "certifications") {
+      sec.style.display = "none";
+    }
+  });
+
+  goToSection("home");
+  alert("👋 Logged out successfully");
 }
 
 /* ===============================
@@ -272,11 +325,15 @@ function initCourseFilters() {
 
       const filter = btn.dataset.filter;
 
-      document.querySelectorAll(".course-card").forEach((card) => {
+      document.querySelectorAll(".course-card, .lab-card").forEach((card) => {
         if (filter === "all" || card.dataset.category === filter) {
           card.style.display = "block";
+          card.style.opacity = "1";
         } else {
-          card.style.display = "none";
+          card.style.opacity = "0";
+          setTimeout(() => {
+            card.style.display = "none";
+          }, 300);
         }
       });
     });
@@ -431,7 +488,28 @@ function initMatrixRain() {
 ================================*/
 
 function updateDashboardAccess() {
-  const dashboardAccess = document.getElementById("dashboardAccess");
+  const dashboard = document.getElementById("dashboard");
+  const certifications = document.getElementById("certifications");
 
-  if (currentUser && dashboardAccess) dashboardAccess.style.display = "block";
+  if (currentUser) {
+    if (dashboard) dashboard.style.display = "block";
+    if (certifications) certifications.style.display = "block";
+  }
+}
+
+// 🔥 PLACEHOLDER FUNCTIONS
+function startCourse(courseId) {
+  alert(`🚀 Starting ${courseId.toUpperCase()} course...`);
+}
+
+function downloadCert(certId) {
+  alert(`📜 Downloading ${certId.toUpperCase()} certificate...`);
+}
+function downloadCertificate(course) {
+  if (!localStorage.getItem("loggedIn")) {
+    showLoginModal(); // 🔐 ONLY HERE
+    return;
+  }
+
+  alert("🎉 Certificate downloaded for " + course.toUpperCase());
 }
