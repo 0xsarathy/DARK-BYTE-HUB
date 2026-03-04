@@ -583,16 +583,27 @@ Year: 2026
 
 function loginSuccess() {
   const modal = document.getElementById("loginModal");
-  modal.classList.remove("active");
-  modal.style.display = "none";
+  if (modal) {
+    modal.classList.remove("active");
+    modal.style.display = "none";
+  }
 
+  document.body.style.overflow = "auto";
+
+  // SHOW USER
   document.getElementById("userProfile").style.display = "flex";
   document.getElementById("userName").textContent = currentUser.name;
-  document.getElementById("guestStats").style.display = "none";
+
+  // 🔥 HIDE TOTAL COUNT / STATS
+  const guestStats = document.getElementById("guestStats");
+  if (guestStats) {
+    guestStats.style.display = "none";
+  }
+
+  updateDashboardAccess();
 
   alert(`✅ Welcome ${currentUser.name}`);
 }
-
 /* ===============================
    DEMO LOGIN FIX
 ================================*/
@@ -603,8 +614,18 @@ function demoLogin(e) {
   currentUser = {
     name: "Agent 001 🔥",
     email: "agent001@darkbytehub.com",
-    role: "Elite"
+    role: "Elite Pentester"
   };
 
-  loginSuccess();
+  loginSuccess(); // 🔥 one single source
+}
+function logout() {
+  currentUser = null;
+
+  document.getElementById("userProfile").style.display = "none";
+  document.getElementById("guestStats").style.display = "flex";
+
+  goToSection("home");
+
+  alert("👋 Logged out successfully");
 }
