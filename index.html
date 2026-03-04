@@ -14,13 +14,13 @@
     
     <!-- MAIN CONTENT -->
     <div id="mainContent">
-        <!-- CLEAN HEADER - NO SERVICES -->
+        <!-- CLEAN HEADER -->
         <header id="header">
             <div class="logo-glow"><i class="fas fa-skull-crossbones"></i> Dark Byte Hub</div>
             <nav class="nav-desktop">
                 <a href="#" class="nav-link active" data-section="home"><i class="fas fa-home"></i> Home</a>
-                <a href="#" class="nav-link login-trigger" data-section="training"><i class="fas fa-graduation-cap"></i> Training</a>
-                <a href="#" class="nav-link login-trigger" data-section="dashboard"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+                <a href="#" class="nav-link" data-section="training"><i class="fas fa-graduation-cap"></i> Training</a>
+                <a href="#" class="nav-link" data-section="services"><i class="fas fa-cogs"></i> Services</a>
                 <a href="#" class="nav-link login-trigger" data-section="certifications"><i class="fas fa-certificate"></i> Certifications</a>
             </nav>
             <div class="header-stats" id="guestStats">
@@ -33,12 +33,12 @@
             <div class="menu-toggle" id="menuToggle"><span></span><span></span><span></span></div>
         </header>
         
-        <!-- CLEAN MOBILE MENU -->
+        <!-- MOBILE MENU -->
         <div class="mobile-menu">
             <nav class="mobile-nav">
                 <a href="#" class="nav-link" data-section="home">Home</a>
-                <a href="#" class="nav-link login-trigger" data-section="training">Training</a>
-                <a href="#" class="nav-link login-trigger" data-section="dashboard">Dashboard</a>
+                <a href="#" class="nav-link" data-section="training">Training</a>
+                <a href="#" class="nav-link" data-section="services">Services</a>
                 <a href="#" class="nav-link login-trigger" data-section="certifications">Certifications</a>
             </nav>
         </div>
@@ -75,59 +75,300 @@
             </div>
         </section>
 
-        <!-- Training Section -->
+        <!-- Training Section - Udemy + TryHackMe + HackTheBox Style -->
         <section id="training" class="section">
             <h2 class="section-title">Training Arsenal</h2>
+            
+            <!-- Dashboard Access Button -->
+            <div class="dashboard-access" id="dashboardAccess" style="display: none;">
+                <button class="btn primary btn-large login-trigger" onclick="goToSection('dashboard')">
+                    <i class="fas fa-tachometer-alt"></i> Go to Dashboard
+                </button>
+            </div>
+
+            <!-- Courses Filter -->
+            <div class="courses-filter">
+                <button class="filter-btn active" data-filter="all">All Courses</button>
+                <button class="filter-btn" data-filter="ceh">CEH v12</button>
+                <button class="filter-btn" data-filter="web">Web Pentest</button>
+                <button class="filter-btn" data-filter="bug">Bug Bounty</button>
+                <button class="filter-btn" data-filter="cloud">Cloud Security</button>
+                <button class="filter-btn" data-filter="mobile">Mobile Hacking</button>
+            </div>
+            
             <div class="courses-grid">
-                <div class="course-card locked-card" onclick="showLoginModal()">
-                    <div class="course-header">
-                        <div class="course-icon"><i class="fas fa-crown"></i></div>
-                        <h4>🔥 CEH v12</h4>
-                        <div class="course-meta">
-                            <span>12 Weeks • 65% Complete</span>
-                            <div class="course-progress-bar">
+                <!-- CEH v12 -->
+                <div class="course-card" data-category="ceh">
+                    <div class="course-3d-container">
+                        <div class="course-3d-card">
+                            <div class="course-header">
+                                <div class="course-icon"><i class="fas fa-crown"></i></div>
+                                <div class="course-badge bestseller">🔥 BESTSELLER</div>
+                            </div>
+                            <h4>CEH v12 Certified Ethical Hacker</h4>
+                            <div class="instructor">by Elite Cyber Ops Team</div>
+                            <div class="course-meta">
+                                <div class="rating">
+                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                    <span>4.9 (12,847)</span>
+                                </div>
+                                <div class="price">
+                                    <span class="old-price">₹19,999</span>
+                                    <span class="new-price">₹4,999</span>
+                                </div>
+                            </div>
+                            <div class="course-info">
+                                <div><i class="fas fa-clock"></i> 45 hours</div>
+                                <div><i class="fas fa-chalkboard-teacher"></i> 12 Weeks</div>
+                                <div><i class="fas fa-users"></i> 25k Students</div>
+                            </div>
+                            <div class="course-progress">
+                                <span>65% Complete</span>
                                 <div class="progress-fill" style="width: 65%"></div>
                             </div>
+                            <button class="btn primary course-cta">Continue Course</button>
                         </div>
-                    </div>
-                    <div class="course-lock-overlay">
-                        <i class="fas fa-lock"></i> LOGIN REQUIRED
                     </div>
                 </div>
-                <div class="course-card locked-card" onclick="showLoginModal()">
-                    <div class="course-header">
-                        <div class="course-icon"><i class="fas fa-globe"></i></div>
-                        <h4>🌐 Web Pentest</h4>
-                        <div class="course-meta">
-                            <span>8 Weeks • 25% Complete</span>
-                            <div class="course-progress-bar">
-                                <div class="progress-fill" style="width: 25%"></div>
+
+                <!-- Web Pentest -->
+                <div class="course-card" data-category="web">
+                    <div class="course-3d-container">
+                        <div class="course-3d-card">
+                            <div class="course-header">
+                                <div class="course-icon"><i class="fas fa-globe"></i></div>
+                                <div class="course-badge new">✨ NEW</div>
                             </div>
+                            <h4>Advanced Web Penetration Testing</h4>
+                            <div class="instructor">by WebSec Masters</div>
+                            <div class="course-meta">
+                                <div class="rating">
+                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                                    <span>4.7 (8,234)</span>
+                                </div>
+                                <div class="price">
+                                    <span class="old-price">₹14,999</span>
+                                    <span class="new-price">₹3,499</span>
+                                </div>
+                            </div>
+                            <div class="course-info">
+                                <div><i class="fas fa-clock"></i> 32 hours</div>
+                                <div><i class="fas fa-chalkboard-teacher"></i> 8 Weeks</div>
+                                <div><i class="fas fa-users"></i> 15k Students</div>
+                            </div>
+                            <button class="btn primary course-cta">Start Course</button>
                         </div>
                     </div>
-                    <div class="course-lock-overlay">
-                        <i class="fas fa-lock"></i> LOGIN REQUIRED
+                </div>
+
+                <!-- Bug Bounty -->
+                <div class="course-card" data-category="bug">
+                    <div class="course-3d-container">
+                        <div class="course-3d-card">
+                            <div class="course-header">
+                                <div class="course-icon"><i class="fas fa-bug"></i></div>
+                                <div class="course-badge top">⭐ TOP RATED</div>
+                            </div>
+                            <h4>Bug Bounty Hunting Masterclass</h4>
+                            <div class="instructor">by Bug Hunter Pro</div>
+                            <div class="course-meta">
+                                <div class="rating">
+                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                    <span>4.9 (5,672)</span>
+                                </div>
+                                <div class="price">
+                                    <span class="old-price">₹12,999</span>
+                                    <span class="new-price">₹2,999</span>
+                                </div>
+                            </div>
+                            <div class="course-info">
+                                <div><i class="fas fa-clock"></i> 28 hours</div>
+                                <div><i class="fas fa-chalkboard-teacher"></i> 6 Weeks</div>
+                                <div><i class="fas fa-users"></i> 10k Students</div>
+                            </div>
+                            <button class="btn primary course-cta">Enroll Now</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cloud Security -->
+                <div class="course-card" data-category="cloud">
+                    <div class="course-3d-container">
+                        <div class="course-3d-card">
+                            <div class="course-header">
+                                <div class="course-icon"><i class="fas fa-cloud"></i></div>
+                                <div class="course-badge updated">🔄 UPDATED</div>
+                            </div>
+                            <h4>AWS Cloud Security Professional</h4>
+                            <div class="instructor">by CloudSec Experts</div>
+                            <div class="course-meta">
+                                <div class="rating">
+                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                    <span>4.8 (7,890)</span>
+                                </div>
+                                <div class="price">
+                                    <span class="old-price">₹16,999</span>
+                                    <span class="new-price">₹5,999</span>
+                                </div>
+                            </div>
+                            <div class="course-info">
+                                <div><i class="fas fa-clock"></i> 40 hours</div>
+                                <div><i class="fas fa-chalkboard-teacher"></i> 10 Weeks</div>
+                                <div><i class="fas fa-users"></i> 18k Students</div>
+                            </div>
+                            <button class="btn primary course-cta">Start Course</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mobile Hacking -->
+                <div class="course-card" data-category="mobile">
+                    <div class="course-3d-container">
+                        <div class="course-3d-card">
+                            <div class="course-header">
+                                <div class="course-icon"><i class="fas fa-mobile-alt"></i></div>
+                                <div class="course-badge new">✨ NEW</div>
+                            </div>
+                            <h4>Mobile App Penetration Testing</h4>
+                            <div class="instructor">by MobileSec Team</div>
+                            <div class="course-meta">
+                                <div class="rating">
+                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                                    <span>4.6 (3,456)</span>
+                                </div>
+                                <div class="price">
+                                    <span class="old-price">₹11,999</span>
+                                    <span class="new-price">₹2,499</span>
+                                </div>
+                            </div>
+                            <div class="course-info">
+                                <div><i class="fas fa-clock"></i> 22 hours</div>
+                                <div><i class="fas fa-chalkboard-teacher"></i> 5 Weeks</div>
+                                <div><i class="fas fa-users"></i> 6k Students</div>
+                            </div>
+                            <button class="btn primary course-cta">Enroll Now</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Network Security -->
+                <div class="course-card" data-category="ceh">
+                    <div class="course-3d-container">
+                        <div class="course-3d-card">
+                            <div class="course-header">
+                                <div class="course-icon"><i class="fas fa-shield-alt"></i></div>
+                                <div class="course-badge free">🎁 FREE</div>
+                            </div>
+                            <h4>Network Security Fundamentals</h4>
+                            <div class="instructor">by LAX360 Security</div>
+                            <div class="course-meta">
+                                <div class="rating">
+                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                    <span>4.8 (9,123)</span>
+                                </div>
+                                <div class="price">
+                                    <span class="new-price free-price">FREE</span>
+                                </div>
+                            </div>
+                            <div class="course-info">
+                                <div><i class="fas fa-clock"></i> 15 hours</div>
+                                <div><i class="fas fa-chalkboard-teacher"></i> 4 Weeks</div>
+                                <div><i class="fas fa-users"></i> 22k Students</div>
+                            </div>
+                            <button class="btn primary course-cta">Start Free</button>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Dashboard -->
+        <!-- Services Section - LAX360 Cybersecurity Services -->
+        <section id="services" class="section">
+            <h2 class="section-title">LAX360 Cybersecurity Services</h2>
+            <p class="section-subtitle">Enterprise-grade security solutions for the modern threat landscape</p>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3>Penetration Testing</h3>
+                    <p>Comprehensive vulnerability assessments and ethical hacking simulations across web, mobile, cloud, and network infrastructure.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Web Application Testing</li>
+                        <li><i class="fas fa-check"></i> Network Penetration</li>
+                        <li><i class="fas fa-check"></i> Mobile App Security</li>
+                        <li><i class="fas fa-check"></i> Cloud Infrastructure</li>
+                    </ul>
+                    <button class="btn primary">Get Quote</button>
+                </div>
+
+                <div class="service-card featured">
+                    <div class="service-badge">MOST POPULAR</div>
+                    <div class="service-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Red Team Operations</h3>
+                    <p>Advanced adversary simulation with real-world attack scenarios, custom tooling, and persistence techniques.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Physical Security Testing</li>
+                        <li><i class="fas fa-check"></i> Social Engineering</li>
+                        <li><i class="fas fa-check"></i> Custom Malware Development</li>
+                        <li><i class="fas fa-check"></i> C2 Infrastructure</li>
+                    </ul>
+                    <button class="btn primary">Request Demo</button>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-bug"></i>
+                    </div>
+                    <h3>Bug Bounty Program</h3>
+                    <p>Managed bug bounty programs with expert triage, validation, and remediation guidance for your applications.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Program Setup & Management</li>
+                        <li><i class="fas fa-check"></i> Expert Vulnerability Review</li>
+                        <li><i class="fas fa-check"></i> Hacker Community Access</li>
+                        <li><i class="fas fa-check"></i> Reward Management</li>
+                    </ul>
+                    <button class="btn primary">Start Program</button>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-cloud"></i>
+                    </div>
+                    <h3>Cloud Security</h3>
+                    <p>AWS, Azure, and GCP security assessments with compliance auditing and automated security controls implementation.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Multi-Cloud Assessment</li>
+                        <li><i class="fas fa-check"></i> Compliance Auditing</li>
+                        <li><i class="fas fa-check"></i> IAM Optimization</li>
+                        <li><i class="fas fa-check"></i> Automation Setup</li>
+                    </ul>
+                    <button class="btn primary">Audit Cloud</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dashboard - MOVED FROM NAVBAR -->
         <section id="dashboard" class="section" style="display: none;">
             <h2 class="section-title">Agent Dashboard</h2>
             <div class="dashboard-container">
-                <div class="progress-card">
-                    <div class="progress-header">
-                        <i class="fas fa-fire" style="color: #00ff88;"></i>
-                        <h3>CEH v12</h3>
-                        <span>65% Complete</span>
+                <div class="progress-overview">
+                    <div class="progress-card">
+                        <div class="progress-header">
+                            <i class="fas fa-fire" style="color: #00ff88;"></i>
+                            <h3>CEH v12</h3>
+                            <span>65% Complete</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 65%"></div>
+                        </div>
+                        <button class="btn primary" onclick="startCourse('ceh')">
+                            <i class="fas fa-play"></i> Continue Training
+                        </button>
                     </div>
-                    <div class="progress-bar">
-                        <div class="progress-fill" style="width: 65%"></div>
-                    </div>
-                    <button class="btn primary" onclick="startCourse('ceh')">
-                        <i class="fas fa-play"></i> Continue Training
-                    </button>
                 </div>
             </div>
         </section>
