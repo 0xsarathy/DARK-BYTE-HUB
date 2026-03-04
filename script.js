@@ -328,3 +328,110 @@ document.addEventListener('keydown', (e) => {
         document.body.style.overflow = 'auto';
     }
 });
+// 🔥 YOUR SAME JS - ONLY HAMBURGER + BACK/FORWARD FIXED
+// ADD THESE FUNCTIONS TO YOUR CURRENT JS
+
+function fixHamburgerPerfect() {
+    const toggle = document.getElementById('menuToggle');
+    const menu = document.querySelector('.mobile-menu');
+    
+    if (!toggle || !menu) return;
+    
+    // CLEAR OLD LISTENERS
+    toggle.onclick = null;
+    
+    toggle.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        console.log('🍔 HAMBURGER PERFECT CLICK');
+        
+        toggle.classList.toggle('active');
+        menu.classList.toggle('active');
+        
+        if (menu.classList.contains('active')) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'auto';
+        }
+    });
+    
+    // AUTO CLOSE ON DESIZE
+    let resizeTimeout;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(() => {
+            if (window.innerWidth > 768) {
+                menu.classList.remove('active');
+                toggle.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        }, 250);
+    });
+}
+
+function initHistoryPerfect() {
+    if (!window.location.hash) {
+        window.history.replaceState({section: 'home'}, '', '#home');
+    }
+    
+    window.addEventListener('popstate', function(e) {
+        console.log('🔙 BACK/FORWARD PERFECT');
+        const section = window.location.hash.replace('#', '') || 'home';
+        goToSection(section);
+    });
+}
+
+// UPDATE YOUR initEverything() FUNCTION - ADD THESE LINES
+function initEverything() {
+    console.log('🚀 DARK BYTE HUB - RESPONSIVE FIXED');
+    
+    setTimeout(() => {
+        const mainContent = document.getElementById('mainContent');
+        if (mainContent) {
+            mainContent.style.opacity = '1';
+            mainContent.style.display = 'block';
+        }
+        
+        // YOUR SAME CODE...
+        initParticles();
+        initMatrixRain();
+        initStats();
+        bindNavigation();
+        bindForms();
+        initCourseFilters();
+        updateDashboardAccess();
+        
+        // 🔥 THESE 2 LINES FIX EVERYTHING
+        fixHamburgerPerfect();
+        initHistoryPerfect();
+    }, 500);
+}
+
+// UPDATE goToSection() FUNCTION - CLOSE MOBILE MENU
+function goToSection(sectionId) {
+    console.log('🎯 SECTION:', sectionId);
+    
+    currentSection = sectionId;
+    
+    document.querySelectorAll('.section').forEach(s => {
+        s.classList.remove('active');
+        s.style.display = 'none';
+    });
+    
+    document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+    document.querySelector(`[data-section="${sectionId}"]`)?.classList.add('active');
+    
+    const target = document.getElementById(sectionId);
+    if (target) {
+        target.style.display = 'block';
+        setTimeout(() => target.classList.add('active'), 100);
+        window.history.pushState({section: sectionId}, '', `#${sectionId}`);
+    }
+    
+    // 🔥 CLOSE MOBILE MENU AUTOMATIC
+    const menu = document.querySelector('.mobile-menu');
+    const toggle = document.getElementById('menuToggle');
+    if (menu) menu.classList.remove('active');
+    if (toggle) toggle.classList.remove('active');
+    document.body.style.overflow = 'auto';
+}
