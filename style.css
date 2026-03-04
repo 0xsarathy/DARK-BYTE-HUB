@@ -178,7 +178,7 @@ body {
 }
 
 .section {
-    min-height: 100vh;
+    min-height: 100%;
     padding: 140px 5% 80px;
     opacity: 0;
     visibility: hidden;
@@ -187,6 +187,7 @@ body {
     top: 0;
     left: 0;
     transition: all 0.5s ease;
+    
 }
 
 .section.active {
@@ -212,7 +213,7 @@ body {
     grid-template-columns: 1fr 1fr;
     gap: clamp(2rem, 8vw, 5rem);
     align-items: center;
-    min-height: 100vh;
+    min-height: 100%;
 }
 
 .badge {
@@ -286,6 +287,8 @@ body {
 .hero-buttons {
     display: flex;
     gap: 1rem;
+    align-items: center;
+    justify-content: center;
     flex-wrap: wrap;
 }
 
@@ -303,6 +306,7 @@ body {
     position: relative;
     overflow: hidden;
 }
+
 
 .btn.primary {
     background: var(--gradient-primary);
@@ -1832,4 +1836,32 @@ body {
 .cert-card.locked {
   opacity: 0.55;
   filter: grayscale(0.4);
+}
+/* ===============================
+   FULL BODY MICRO BUBBLE BG
+================================ */
+
+#microBubbleBg {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -10;
+  pointer-events: none;
+}
+
+/* DARK BACK THEME */
+body {
+  background: radial-gradient(
+      circle at top,
+      #04110c,
+      #020807 60%,
+      #000
+  );
+}
+
+.hero{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

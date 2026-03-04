@@ -2,7 +2,6 @@
 
 let currentUser = null;
 let particles = [];
-let matrixCtx;
 let currentSection = "home";
 
 /* ===============================
@@ -20,7 +19,6 @@ function initEverything() {
     }
 
     initParticles();
-    initMatrixRain();
     initStats();
 
     bindNavigation();
@@ -436,54 +434,6 @@ function initParticles() {
 }
 
 /* ===============================
-   MATRIX RAIN
-================================*/
-
-function initMatrixRain() {
-  const container = document.querySelector(".matrix-rain");
-  if (!container) return;
-
-  const canvas = document.createElement("canvas");
-
-  container.appendChild(canvas);
-
-  canvas.width = 400;
-  canvas.height = 400;
-
-  canvas.style.width = "100%";
-  canvas.style.height = "100%";
-  canvas.style.position = "absolute";
-
-  matrixCtx = canvas.getContext("2d");
-
-  const chars = "01ABCFGHKLMNPRSTVXYZ!@#$%^&*";
-  const fontSize = 14;
-
-  const columns = Math.floor(400 / fontSize);
-  const drops = Array(columns).fill(1);
-
-  function draw() {
-    matrixCtx.fillStyle = "rgba(2,4,11,0.08)";
-    matrixCtx.fillRect(0, 0, 400, 400);
-
-    matrixCtx.fillStyle = "#00ff88";
-    matrixCtx.font = `${fontSize}px monospace`;
-
-    drops.forEach((y, i) => {
-      const text = chars[Math.floor(Math.random() * chars.length)];
-
-      matrixCtx.fillText(text, i * fontSize, y * fontSize);
-
-      if (y * fontSize > 400 && Math.random() > 0.975) drops[i] = 0;
-
-      drops[i]++;
-    });
-  }
-
-  setInterval(draw, 50);
-}
-
-/* ===============================
    DASHBOARD ACCESS
 ================================*/
 
@@ -619,13 +569,64 @@ function demoLogin(e) {
 
   loginSuccess(); // 🔥 one single source
 }
-function logout() {
-  currentUser = null;
+/* ===============================
+   FULL BODY MICRO BUBBLE ENGINE
+================================ */
 
-  document.getElementById("userProfile").style.display = "none";
-  document.getElementById("guestStats").style.display = "flex";
+const bubbleCanvas = document.getElementById("microBubbleBg");
+const btx = bubbleCanvas.getContext("2d");
 
-  goToSection("home");
+let microBubbles = [];
 
-  alert("👋 Logged out successfully");
+function resizeBubbleCanvas() {
+  bubbleCanvas.width = window.innerWidth;
+  bubbleCanvas.height = window.innerHeight;
 }
+resizeBubbleCanvas();
+window.addEventListener("resize", resizeBubbleCanvas);
+
+class MicroBubble {
+  constructor() {
+    this.reset();
+  }
+
+  reset() {
+    this.x = Math.random() * bubbleCanvas.width;
+    this.y = bubbleCanvas.height + Math.random() * 300;
+    this.size = Math.random() * 1.8 + 0.6; // MICRO
+    this.speed = Math.random() * 0.25 + 0.1;
+    this.alpha = Math.random() * 0.35 + 0.15;
+  }
+
+  update() {
+    this.y -= this.speed;
+    if (this.y < -20) this.reset();
+  }
+
+  draw() {
+    btx.beginPath();
+    btx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+    btx.fillStyle = `rgba(0, 255, 136, ${this.alpha})`;
+    btx.shadowBlur = 10;
+    btx.shadowColor = "#00ff88";
+    btx.fill();
+  }
+}
+
+// CREATE BUBBLES
+for (let i = 0; i < 180; i++) {
+  microBubbles.push(new MicroBubble());
+}
+
+function animateMicroBubbles() {
+  btx.clearRect(0, 0, bubbleCanvas.width, bubbleCanvas.height);
+
+  microBubbles.forEach(b => {
+    b.update();
+    b.draw();
+  });
+
+  requestAnimationFrame(animateMicroBubbles);
+}
+
+animateMicroBubbles();
