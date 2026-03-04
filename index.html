@@ -1,653 +1,715 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dark Byte Hub | CEH v12 • Elite Pentesting</title>
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@400;700;900&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
-</head>
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@400;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
 
-<body>
+  <body>
     <!-- Particles Canvas -->
     <canvas id="particles-bg"></canvas>
 
     <!-- MAIN CONTENT -->
     <div id="mainContent">
-        <!-- CLEAN HEADER -->
-        <header id="header">
-            <div class="logo-glow"><i class="fas fa-skull-crossbones"></i> Dark Byte Hub</div>
-            <!-- 🔥 ADD "LABS" TO YOUR NAVBAR (in both desktop & mobile nav) -->
-            <!-- UPDATE YOUR NAV LINKS LIKE THIS: -->
-            <!-- ================= NAVBAR ================= -->
-            <header id="header">
-                <div class="logo-glow">
-                    <i class="fas fa-skull-crossbones"></i> Dark Byte Hub
-                </div>
-
-                <!-- Desktop Nav -->
-                <nav class="nav-desktop">
-                    <a href="#" class="nav-link active" data-section="home">🏠 Home</a>
-                    <a href="#" class="nav-link" data-section="training">🎓 Training</a>
-                    <a href="#" class="nav-link" data-section="labs">⚗️ Labs</a>
-                    <a href="#" class="nav-link" data-section="services">🚀 Services</a>
-                    <a href="#" class="nav-link login-trigger" data-section="certifications">🏆 Certifications</a>
-                    <a href="#" class="nav-link login-trigger" data-section="dashboard">📊 Dashboard</a>
-                </nav>
-
-                <!-- Mobile Toggle -->
-                <div class="menu-toggle" id="menuToggle">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-            </header>
-
-            <!-- Mobile Menu -->
-            <div class="mobile-menu" id="mobileMenu">
-                <nav class="mobile-nav">
-                    <a href="#" class="nav-link" data-section="home">🏠 Home</a>
-                    <a href="#" class="nav-link" data-section="training">🎓 Training</a>
-                    <a href="#" class="nav-link" data-section="labs">⚗️ Labs</a>
-                    <a href="#" class="nav-link" data-section="services">🚀 Services</a>
-                    <a href="#" class="nav-link login-trigger" data-section="certifications">🏆 Certifications</a>
-                    <a href="#" class="nav-link login-trigger" data-section="dashboard">📊 Dashboard</a>
-                </nav>
-            </div>
-
-            <div class="header-stats" id="guestStats">
-                <div class="stat-item"><i class="fas fa-users"></i> 12,847 Agents</div>
-            </div>
-            <div class="user-profile" id="userProfile" style="display: none;">
-                <span id="userName"></span>
-                <button class="logout-btn" onclick="logout()"><i class="fas fa-sign-out-alt"></i></button>
-            </div>
-            <div class="menu-toggle" id="menuToggle"><span></span><span></span><span></span></div>
-        </header>
-
-        <!-- MOBILE MENU -->
-        <!-- MOBILE MENU - UPDATE THIS IN YOUR HTML -->
-        <div class="mobile-menu">
-            <nav class="mobile-nav">
-                <a href="#" class="nav-link" data-section="home">🏠 Home</a>
-                <a href="#" class="nav-link" data-section="training">🎓 Training</a>
-                <a href="#" class="nav-link" data-section="labs">⚗️ Labs</a>
-                <a href="#" class="nav-link" data-section="services">🚀 Services</a>
-                <a href="#" class="nav-link login-trigger" data-section="certifications">🏆 Certifications</a>
-                <a href="#" class="nav-link login-trigger" data-section="dashboard">📊 Dashboard</a>
-            </nav>
+      <!-- ================= HEADER ================= -->
+      <header id="header">
+        <!-- Logo -->
+        <div class="logo-glow">
+          <i class="fas fa-skull-crossbones"></i> Dark Byte Hub
         </div>
 
+        <!-- Desktop Navigation -->
+        <nav class="nav-desktop">
+          <a href="#" class="nav-link active" data-section="home">🏠 Home</a>
+          <a href="#" class="nav-link" data-section="training">🎓 Training</a>
+          <a href="#" class="nav-link" data-section="labs">⚗️ Labs</a>
+          <a href="#" class="nav-link" data-section="services">🚀 Services</a>
+          <a
+            href="#"
+            class="nav-link login-trigger"
+            data-section="certifications"
+            >🏆 Certifications</a
+          >
+          <a href="#" class="nav-link login-trigger" data-section="dashboard"
+            >📊 Dashboard</a
+          >
+        </nav>
 
-
-        <!-- Home Section -->
-        <section id="home" class="section active">
-            <div class="hero">
-                <div class="hero-content">
-                    <span class="badge">🔥 LIVE 2026</span>
-                    <h1 class="hero-title glitch-hover">Weaponized Training</h1>
-                    <p class="hero-subtitle">CEH v12 • Web Pentest • Bug Bounty</p>
-                    <div class="hero-stats">
-                        <div class="stat-box">
-                            <span class="stat-number" data-target="12847">0</span>
-                            <div class="stat-label">Active Agents</div>
-                        </div>
-                        <div class="stat-box">
-                            <span class="stat-number" data-target="98">0</span>
-                            <div class="stat-label">Success Rate %</div>
-                        </div>
-                    </div>
-                    <div class="hero-buttons">
-                        <button class="btn primary" onclick="goToSection('training')">
-                            <i class="fas fa-rocket"></i> Start Training
-                        </button>
-                        <button class="btn secondary login-trigger" onclick="showLoginModal()">
-                            <i class="fas fa-lock-open"></i> Agent Login
-                        </button>
-                    </div>
-                </div>
-                <div class="hero-visual">
-                    <div class="matrix-rain"></div>
-                </div>
-            </div>
-        </section>
-        <!-- 🔥 TRAINING SECTION - UPDATE THIS IN YOUR HTML -->
-        <section id="training" class="section">
-            <div class="container">
-                <h2 class="section-title">🎯 Premium Training Courses</h2>
-                <p class="section-subtitle">Master real-world cybersecurity skills with hands-on labs and certifications
-                </p>
-
-                <!-- FILTER BUTTONS -->
-                <div class="courses-filter">
-                    <button class="filter-btn active" data-filter="all">All Courses</button>
-                    <button class="filter-btn" data-filter="web">Web Hacking</button>
-                    <button class="filter-btn" data-filter="network">Network</button>
-                    <button class="filter-btn" data-filter="cloud">Cloud</button>
-                    <button class="filter-btn" data-filter="redteam">Red Team</button>
-                </div>
-
-                <div class="courses-grid">
-                    <!-- WEB HACKING -->
-                    <div class="course-card" data-category="web">
-                        <div class="course-3d-container">
-                            <div class="course-3d-card">
-                                <div class="course-header">
-                                    <div class="course-icon">🌐</div>
-                                    <div class="course-badge bestseller">Bestseller</div>
-                                </div>
-                                <div class="instructor">by CyberMaster Pro</div>
-                                <div class="course-meta">
-                                    <div class="rating">
-                                        <i>⭐</i> 4.9 (2,847 ratings)
-                                    </div>
-                                    <div class="price">
-                                        <span class="old-price">₹9,999</span>
-                                        <span class="new-price">₹2,999</span>
-                                    </div>
-                                </div>
-                                <div class="course-info">
-                                    <div>12.5 hrs • 156 lectures • Beginner</div>
-                                </div>
-                                <div class="course-progress">
-                                    <span>78% Complete</span>
-                                    <div class="progress-fill" style="width: 78%"></div>
-                                </div>
-                                <button class="btn primary course-cta">Continue Course</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- NETWORK PENTESTING -->
-                    <div class="course-card" data-category="network">
-                        <div class="course-3d-container">
-                            <div class="course-3d-card">
-                                <div class="course-header">
-                                    <div class="course-icon">🔌</div>
-                                    <div class="course-badge new">New</div>
-                                </div>
-                                <div class="instructor">by Network Ninja</div>
-                                <div class="course-meta">
-                                    <div class="rating">
-                                        <i>⭐</i> 4.8 (1,923 ratings)
-                                    </div>
-                                    <div class="price">
-                                        <span class="old-price">₹12,999</span>
-                                        <span class="new-price">₹3,499</span>
-                                    </div>
-                                </div>
-                                <div class="course-info">
-                                    <div>18.2 hrs • 234 lectures • Intermediate</div>
-                                </div>
-                                <div class="course-progress">
-                                    <span>45% Complete</span>
-                                    <div class="progress-fill" style="width: 45%"></div>
-                                </div>
-                                <button class="btn primary course-cta">Start Course</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- BURP SUITE -->
-                    <div class="course-card" data-category="web">
-                        <div class="course-3d-container">
-                            <div class="course-3d-card">
-                                <div class="course-header">
-                                    <div class="course-icon">🐝</div>
-                                    <div class="course-badge top">Top Rated</div>
-                                </div>
-                                <div class="instructor">by Burp Expert</div>
-                                <div class="course-meta">
-                                    <div class="rating">
-                                        <i>⭐</i> 4.9 (4,128 ratings)
-                                    </div>
-                                    <div class="price free-price">FREE</div>
-                                </div>
-                                <div class="course-info">
-                                    <div>8.5 hrs • 112 lectures • All Levels</div>
-                                </div>
-                                <div class="course-progress">
-                                    <span>92% Complete</span>
-                                    <div class="progress-fill" style="width: 92%"></div>
-                                </div>
-                                <button class="btn primary course-cta">Continue Course</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- COBALT STRIKE -->
-                    <div class="course-card" data-category="redteam">
-                        <div class="course-3d-container">
-                            <div class="course-3d-card">
-                                <div class="course-header">
-                                    <div class="course-icon">⚔️</div>
-                                    <div class="course-badge updated">Updated 2026</div>
-                                </div>
-                                <div class="instructor">by RedTeam Elite</div>
-                                <div class="course-meta">
-                                    <div class="rating">
-                                        <i>⭐</i> 4.7 (892 ratings)
-                                    </div>
-                                    <div class="price">
-                                        <span class="old-price">₹15,999</span>
-                                        <span class="new-price">₹4,999</span>
-                                    </div>
-                                </div>
-                                <div class="course-info">
-                                    <div>22.1 hrs • 289 lectures • Advanced</div>
-                                </div>
-                                <div class="course-progress">
-                                    <span>23% Complete</span>
-                                    <div class="progress-fill" style="width: 23%"></div>
-                                </div>
-                                <button class="btn primary course-cta">Start Course</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- CLOUD SECURITY -->
-                    <div class="course-card" data-category="cloud">
-                        <div class="course-3d-container">
-                            <div class="course-3d-card">
-                                <div class="course-header">
-                                    <div class="course-icon">☁️</div>
-                                </div>
-                                <div class="instructor">by Cloud Hacker</div>
-                                <div class="course-meta">
-                                    <div class="rating">
-                                        <i>⭐</i> 4.6 (1,456 ratings)
-                                    </div>
-                                    <div class="price">
-                                        <span class="old-price">₹11,999</span>
-                                        <span class="new-price">₹3,199</span>
-                                    </div>
-                                </div>
-                                <div class="course-info">
-                                    <div>15.8 hrs • 198 lectures • Intermediate</div>
-                                </div>
-                                <div class="course-progress">
-                                    <span>0% Complete</span>
-                                    <div class="progress-fill" style="width: 0%"></div>
-                                </div>
-                                <button class="btn primary course-cta">Enroll Now</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- 🔥 HACKING LABS SECTION - TryHackMe STYLE (COMPLETE) -->
-        <section id="labs" class="section">
-            <div class="container">
-                <h2 class="section-title">⚗️ Hacking Labs</h2>
-                <p class="section-subtitle">Browser-based cybersecurity labs • No setup required • Real vulnerabilities
-                </p>
-
-                <!-- FILTER BUTTONS -->
-                <div class="courses-filter">
-                    <button class="filter-btn active" data-filter="all">All Labs</button>
-                    <button class="filter-btn" data-filter="web">Web</button>
-                    <button class="filter-btn" data-filter="network">Network</button>
-                    <button class="filter-btn" data-filter="linux">Linux</button>
-                    <button class="filter-btn" data-filter="ctf">CTF</button>
-                    <button class="filter-btn" data-filter="forensic">Forensic</button>
-                </div>
-
-                <div class="labs-grid">
-                    <!-- WEB VULN LAB 1 -->
-                    <div class="lab-card" data-category="web">
-                        <div class="lab-header">
-                            <div class="lab-icon">🌐</div>
-                            <div class="lab-badge easy">Easy</div>
-                        </div>
-                        <h3>DVWA - SQL Injection</h3>
-                        <p>Practice SQL injection attacks on vulnerable web app. Multiple bypass techniques.</p>
-                        <div class="lab-stats">
-                            <span>⭐ 4.8</span>
-                            <span>2.5h</span>
-                            <span>1,247 attempts</span>
-                        </div>
-                        <div class="lab-tasks">
-                            <div class="task-item complete">Union SQLi</div>
-                            <div class="task-item">Blind SQLi</div>
-                            <div class="task-item">Time-based</div>
-                        </div>
-                        <button class="btn primary lab-start">Launch Lab</button>
-                    </div>
-
-                    <!-- WEB VULN LAB 2 -->
-                    <div class="lab-card" data-category="web">
-                        <div class="lab-header">
-                            <div class="lab-icon">🔓</div>
-                            <div class="lab-badge medium">Medium</div>
-                        </div>
-                        <h3>XSS Playground</h3>
-                        <p>Cross-Site Scripting attacks - Reflected, Stored, DOM-based XSS exploitation.</p>
-                        <div class="lab-stats">
-                            <span>⭐ 4.7</span>
-                            <span>3.2h</span>
-                            <span>987 attempts</span>
-                        </div>
-                        <div class="lab-tasks">
-                            <div class="task-item complete">Reflected XSS</div>
-                            <div class="task-item">Stored XSS</div>
-                            <div class="task-item">DOM XSS</div>
-                        </div>
-                        <button class="btn primary lab-start">Launch Lab</button>
-                    </div>
-
-                    <!-- LINUX PRIVILEGE ESCALATION -->
-                    <div class="lab-card" data-category="linux">
-                        <div class="lab-header">
-                            <div class="lab-icon">🐧</div>
-                            <div class="lab-badge hard">Hard</div>
-                        </div>
-                        <h3>Linux Privesc</h3>
-                        <p>Privilege escalation techniques - SUID, Cron jobs, Docker escapes, Kernel exploits.</p>
-                        <div class="lab-stats">
-                            <span>⭐ 4.9</span>
-                            <span>4.1h</span>
-                            <span>456 attempts</span>
-                        </div>
-                        <div class="lab-tasks">
-                            <div class="task-item">SUID Abuse</div>
-                            <div class="task-item">Cron Jobs</div>
-                            <div class="task-item complete">Kernel Exploit</div>
-                        </div>
-                        <button class="btn primary lab-start">Launch Lab</button>
-                    </div>
-
-                    <!-- WEB SHELL UPLOAD -->
-                    <div class="lab-card" data-category="web">
-                        <div class="lab-header">
-                            <div class="lab-icon">📁</div>
-                            <div class="lab-badge easy">Easy</div>
-                        </div>
-                        <h3>File Upload Vuln</h3>
-                        <p>Bypass file upload restrictions and achieve RCE through webshell upload.</p>
-                        <div class="lab-stats">
-                            <span>⭐ 4.6</span>
-                            <span>1.8h</span>
-                            <span>2,134 attempts</span>
-                        </div>
-                        <div class="lab-tasks">
-                            <div class="task-item complete">Magic Bytes</div>
-                            <div class="task-item">Double Ext</div>
-                            <div class="task-item">Content-Type</div>
-                        </div>
-                        <button class="btn primary lab-start">Launch Lab</button>
-                    </div>
-
-                    <!-- METASPLOIT BASICS -->
-                    <div class="lab-card" data-category="network">
-                        <div class="lab-header">
-                            <div class="lab-icon">🎯</div>
-                            <div class="lab-badge medium">Medium</div>
-                        </div>
-                        <h3>Metasploit Mastery</h3>
-                        <p>Complete Metasploit workflow - Nmap → Exploit → Meterpreter → Post-exploitation.</p>
-                        <div class="lab-stats">
-                            <span>⭐ 4.8</span>
-                            <span>3.5h</span>
-                            <span>1,892 attempts</span>
-                        </div>
-                        <div class="lab-tasks">
-                            <div class="task-item complete">MS17-010</div>
-                            <div class="task-item">EternalBlue</div>
-                            <div class="task-item">Post-Exploitation</div>
-                        </div>
-                        <button class="btn primary lab-start">Launch Lab</button>
-                    </div>
-
-                    <!-- BURP SUITE LAB -->
-                    <div class="lab-card" data-category="web">
-                        <div class="lab-header">
-                            <div class="lab-icon">🐝</div>
-                            <div class="lab-badge medium">Medium</div>
-                        </div>
-                        <h3>Burp Suite Pro</h3>
-                        <p>Intercept, Repeater, Intruder, Scanner - Complete Burp Suite workflow.</p>
-                        <div class="lab-stats">
-                            <span>⭐ 4.9</span>
-                            <span>2.8h</span>
-                            <span>3,456 attempts</span>
-                        </div>
-                        <div class="lab-tasks">
-                            <div class="task-item">Traffic Intercept</div>
-                            <div class="task-item complete">Intruder Attack</div>
-                            <div class="task-item">Race Condition</div>
-                        </div>
-                        <button class="btn primary lab-start">Launch Lab</button>
-                    </div>
-
-                    <!-- ACTIVE DIRECTORY -->
-                    <div class="lab-card" data-category="network">
-                        <div class="lab-header">
-                            <div class="lab-icon">🏢</div>
-                            <div class="lab-badge hard">Hard</div>
-                        </div>
-                        <h3>Active Directory</h3>
-                        <p>AD exploitation chain - Kerberoasting, AS-REP Roasting, DCSync, Golden Ticket.</p>
-                        <div class="lab-stats">
-                            <span>⭐ 4.9</span>
-                            <span>5.2h</span>
-                            <span>234 attempts</span>
-                        </div>
-                        <div class="lab-tasks">
-                            <div class="task-item">BloodHound</div>
-                            <div class="task-item">Kerberoasting</div>
-                            <div class="task-item">DA Compromise</div>
-                        </div>
-                        <button class="btn primary lab-start">Launch Lab</button>
-                    </div>
-
-                    <!-- FORENSICS -->
-                    <div class="lab-card" data-category="forensic">
-                        <div class="lab-header">
-                            <div class="lab-icon">🔍</div>
-                            <div class="lab-badge medium">Medium</div>
-                        </div>
-                        <h3>Memory Forensics</h3>
-                        <p>Volatility analysis - Process injection, hidden processes, registry analysis.</p>
-                        <div class="lab-stats">
-                            <span>⭐ 4.7</span>
-                            <span>2.1h</span>
-                            <span>678 attempts</span>
-                        </div>
-                        <div class="lab-tasks">
-                            <div class="task-item complete">Process List</div>
-                            <div class="task-item">Network Connections</div>
-                            <div class="task-item">Injected Code</div>
-                        </div>
-                        <button class="btn primary lab-start">Launch Lab</button>
-                    </div>
-
-                    <!-- CTF CHALLENGE -->
-                    <div class="lab-card" data-category="ctf">
-                        <div class="lab-header">
-                            <div class="lab-icon">🏆</div>
-                            <div class="lab-badge hard">Hard</div>
-                        </div>
-                        <h3>CTF Challenge</h3>
-                        <p>Multi-stage CTF - Steganography → Reverse Engineering → Buffer Overflow → Root.</p>
-                        <div class="lab-stats">
-                            <span>⭐ 4.9</span>
-                            <span>6.8h</span>
-                            <span>123 attempts</span>
-                        </div>
-                        <div class="lab-tasks">
-                            <div class="task-item">Flag 1/4</div>
-                            <div class="task-item">Flag 2/4</div>
-                            <div class="task-item">Flag 3/4</div>
-                        </div>
-                        <button class="btn primary lab-start">Start CTF</button>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-
-
-        <!-- 🔥 SERVICES SECTION - UPDATE THIS IN YOUR HTML -->
-        <section id="services" class="section">
-            <div class="container">
-                <h2 class="section-title">🚀 Elite Cyber Services</h2>
-                <p class="section-subtitle">Professional penetration testing & cybersecurity solutions for businesses
-                </p>
-
-                <div class="services-grid">
-                    <!-- Penetration Testing -->
-                    <div class="service-card featured">
-                        <div class="service-badge">🔥 MOST POPULAR</div>
-                        <div class="service-icon">🛡️</div>
-                        <h3>Penetration Testing</h3>
-                        <p>Full-scope ethical hacking simulations across web apps, networks, APIs, and cloud
-                            infrastructure.</p>
-                        <ul class="service-features">
-                            <li><i>✅</i>Web Application Testing (OWASP Top 10)</li>
-                            <li><i>✅</i>Network Vulnerability Assessment</li>
-                            <li><i>✅</i>API Security Testing</li>
-                            <li><i>✅</i>Detailed Exploit Reports</li>
-                            <li><i>✅</i>Remediation Guidelines</li>
-                        </ul>
-                        <div class="btn primary btn-full">Start Pentest →</div>
-                    </div>
-
-                    <!-- Red Team -->
-                    <div class="service-card">
-                        <div class="service-icon">🎭</div>
-                        <h3>Red Team Operations</h3>
-                        <p>Advanced adversary simulation with real-world attack scenarios and persistence techniques.
-                        </p>
-                        <ul class="service-features">
-                            <li><i>✅</i>Social Engineering (Phishing/Vishing)</li>
-                            <li><i>✅</i>Physical Security Testing</li>
-                            <li><i>✅</i>Advanced Persistence</li>
-                            <li><i>✅</i>Lateral Movement Simulation</li>
-                            <li><i>✅</i>C2 Infrastructure Evasion</li>
-                        </ul>
-                    </div>
-
-                    <!-- Security Training -->
-                    <div class="service-card">
-                        <div class="service-icon">📚</div>
-                        <h3>Custom Security Training</h3>
-                        <p>Hands-on cybersecurity training for developers, sysadmins, and security teams.</p>
-                        <ul class="service-features">
-                            <li><i>✅</i>Burp Suite Professional</li>
-                            <li><i>✅</i>Kali Linux Mastery</li>
-                            <li><i>✅</i>Cobalt Strike Training</li>
-                            <li><i>✅</i>Custom Payload Development</li>
-                            <li><i>✅</i>Certification Prep</li>
-                        </ul>
-                    </div>
-
-                    <!-- Incident Response -->
-                    <div class="service-card">
-                        <div class="service-icon">⚡</div>
-                        <h3>Incident Response</h3>
-                        <p>24/7 rapid response for ransomware, data breaches, and critical security incidents.</p>
-                        <ul class="service-features">
-                            <li><i>✅</i>4-Hour Response SLA</li>
-                            <li><i>✅</i>Forensic Analysis</li>
-                            <li><i>✅</i>Breach Containment</li>
-                            <li><i>✅</i>Root Cause Analysis</li>
-                            <li><i>✅</i>Post-Incident Review</li>
-                        </ul>
-                    </div>
-
-                    <!-- Custom Tools -->
-                    <div class="service-card">
-                        <div class="service-icon">⚙️</div>
-                        <h3>Custom Tool Development</h3>
-                        <p>Bespoke cybersecurity tools, exploits, and automation frameworks.</p>
-                        <ul class="service-features">
-                            <li><i>✅</i>Custom C2 Frameworks</li>
-                            <li><i>✅</i>Payload Generators</li>
-                            <li><i>✅</i>Reconnaissance Tools</li>
-                            <li><i>✅</i>Exploitation Modules</li>
-                            <li><i>✅</i>Evade Detection</li>
-                        </ul>
-                    </div>
-
-                    <!-- Bug Bounty -->
-                    <div class="service-card">
-                        <div class="service-icon">💰</div>
-                        <h3>Bug Bounty Programs</h3>
-                        <p>Managed bug bounty programs with elite researchers and guaranteed results.</p>
-                        <ul class="service-features">
-                            <li><i>✅</i>Private Researcher Network</li>
-                            <li><i>✅</i>Critical Bug Guaranteed</li>
-                            <li><i>✅</i>Scope Expansion</li>
-                            <li><i>✅</i>Automated Triage</li>
-                            <li><i>✅</i>ROI Tracking</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Dashboard - MOVED FROM NAVBAR -->
-        <section id="dashboard" class="section" style="display: none;">
-            <h2 class="section-title">Agent Dashboard</h2>
-            <div class="dashboard-container">
-                <div class="progress-overview">
-                    <div class="progress-card">
-                        <div class="progress-header">
-                            <i class="fas fa-fire" style="color: #00ff88;"></i>
-                            <h3>CEH v12</h3>
-                            <span>65% Complete</span>
-                        </div>
-                        <div class="progress-bar">
-                            <div class="progress-fill" style="width: 65%"></div>
-                        </div>
-                        <button class="btn primary" onclick="startCourse('ceh')">
-                            <i class="fas fa-play"></i> Continue Training
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Certifications -->
-        <section id="certifications" class="section" style="display: none;">
-            <h2 class="section-title">Certifications</h2>
-            <div class="certs-grid">
-                <div class="cert-card unlocked">
-                    <i class="fas fa-lock-open cert-lock"></i>
-                    <div class="cert-progress">65%</div>
-                    <h4>CEH v12 Certified</h4>
-                    <button class="btn primary" onclick="downloadCert('ceh')">Download Certificate</button>
-                </div>
-            </div>
-        </section>
-
-        <!-- Login Modal -->
-        <div id="loginModal" class="modal">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <i class="fas fa-lock" style="font-size: 4rem; color: #00ff88;"></i>
-                    <h2>Agent Authentication</h2>
-                </div>
-                <form id="loginForm" class="login-form">
-                    <input type="email" id="loginEmail" placeholder="Agent Email" required>
-                    <input type="password" id="loginPassword" placeholder="Access Code" required>
-                    <button type="submit" class="btn primary btn-full btn-glow">
-                        <i class="fas fa-lock-open"></i> Authenticate
-                    </button>
-                </form>
-                <div class="demo-login">
-                    <a href="#" onclick="demoLogin(event)">Try Demo Access</a>
-                </div>
-            </div>
+        <!-- Header Stats -->
+        <div class="header-stats" id="guestStats">
+          <div class="stat-item">
+            <i class="fas fa-users"></i> 12,847 Agents
+          </div>
         </div>
+
+        <!-- Logged User Profile -->
+        <div class="user-profile" id="userProfile" style="display: none">
+          <span id="userName"></span>
+          <button class="logout-btn" onclick="logout()">
+            <i class="fas fa-sign-out-alt"></i>
+          </button>
+        </div>
+
+        <!-- Mobile Toggle -->
+        <div class="menu-toggle" id="menuToggle">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </header>
+
+      <!-- ================= MOBILE MENU ================= -->
+      <div class="mobile-menu" id="mobileMenu">
+        <nav class="mobile-nav">
+          <a href="#" class="nav-link" data-section="home">🏠 Home</a>
+          <a href="#" class="nav-link" data-section="training">🎓 Training</a>
+          <a href="#" class="nav-link" data-section="labs">⚗️ Labs</a>
+          <a href="#" class="nav-link" data-section="services">🚀 Services</a>
+          <a
+            href="#"
+            class="nav-link login-trigger"
+            data-section="certifications"
+            >🏆 Certifications</a
+          >
+          <a href="#" class="nav-link login-trigger" data-section="dashboard"
+            >📊 Dashboard</a
+          >
+        </nav>
+      </div>
+
+      <!-- Home Section -->
+      <section id="home" class="section active">
+        <div class="hero">
+          <div class="hero-content">
+            <span class="badge">🔥 LIVE 2026</span>
+            <h1 class="hero-title glitch-hover">Weaponized Training</h1>
+            <p class="hero-subtitle">CEH v12 • Web Pentest • Bug Bounty</p>
+            <div class="hero-stats">
+              <div class="stat-box">
+                <span class="stat-number" data-target="12847">0</span>
+                <div class="stat-label">Active Agents</div>
+              </div>
+              <div class="stat-box">
+                <span class="stat-number" data-target="98">0</span>
+                <div class="stat-label">Success Rate %</div>
+              </div>
+            </div>
+            <div class="hero-buttons">
+              <button class="btn primary" onclick="goToSection('training')">
+                <i class="fas fa-rocket"></i> Start Training
+              </button>
+              <button
+                class="btn secondary login-trigger"
+                onclick="showLoginModal()"
+              >
+                <i class="fas fa-lock-open"></i> Agent Login
+              </button>
+            </div>
+          </div>
+          <div class="hero-visual">
+            <div class="matrix-rain"></div>
+          </div>
+        </div>
+      </section>
+      <!-- 🔥 TRAINING SECTION - UPDATE THIS IN YOUR HTML -->
+      <section id="training" class="section">
+        <div class="container">
+          <h2 class="section-title">🎯 Premium Training Courses</h2>
+          <p class="section-subtitle">
+            Master real-world cybersecurity skills with hands-on labs and
+            certifications
+          </p>
+
+          <!-- FILTER BUTTONS -->
+          <div class="courses-filter">
+            <button class="filter-btn active" data-filter="all">
+              All Courses
+            </button>
+            <button class="filter-btn" data-filter="web">Web Hacking</button>
+            <button class="filter-btn" data-filter="network">Network</button>
+            <button class="filter-btn" data-filter="cloud">Cloud</button>
+            <button class="filter-btn" data-filter="redteam">Red Team</button>
+          </div>
+
+          <div class="courses-grid">
+            <!-- WEB HACKING -->
+            <div class="course-card" data-category="web">
+              <div class="course-3d-container">
+                <div class="course-3d-card">
+                  <div class="course-header">
+                    <div class="course-icon">🌐</div>
+                    <div class="course-badge bestseller">Bestseller</div>
+                  </div>
+                  <div class="instructor">by CyberMaster Pro</div>
+                  <div class="course-meta">
+                    <div class="rating"><i>⭐</i> 4.9 (2,847 ratings)</div>
+                    <div class="price">
+                      <span class="old-price">₹9,999</span>
+                      <span class="new-price">₹2,999</span>
+                    </div>
+                  </div>
+                  <div class="course-info">
+                    <div>12.5 hrs • 156 lectures • Beginner</div>
+                  </div>
+                  <div class="course-progress">
+                    <span>78% Complete</span>
+                    <div class="progress-fill" style="width: 78%"></div>
+                  </div>
+                  <button class="btn primary course-cta">
+                    Continue Course
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- NETWORK PENTESTING -->
+            <div class="course-card" data-category="network">
+              <div class="course-3d-container">
+                <div class="course-3d-card">
+                  <div class="course-header">
+                    <div class="course-icon">🔌</div>
+                    <div class="course-badge new">New</div>
+                  </div>
+                  <div class="instructor">by Network Ninja</div>
+                  <div class="course-meta">
+                    <div class="rating"><i>⭐</i> 4.8 (1,923 ratings)</div>
+                    <div class="price">
+                      <span class="old-price">₹12,999</span>
+                      <span class="new-price">₹3,499</span>
+                    </div>
+                  </div>
+                  <div class="course-info">
+                    <div>18.2 hrs • 234 lectures • Intermediate</div>
+                  </div>
+                  <div class="course-progress">
+                    <span>45% Complete</span>
+                    <div class="progress-fill" style="width: 45%"></div>
+                  </div>
+                  <button class="btn primary course-cta">Start Course</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- BURP SUITE -->
+            <div class="course-card" data-category="web">
+              <div class="course-3d-container">
+                <div class="course-3d-card">
+                  <div class="course-header">
+                    <div class="course-icon">🐝</div>
+                    <div class="course-badge top">Top Rated</div>
+                  </div>
+                  <div class="instructor">by Burp Expert</div>
+                  <div class="course-meta">
+                    <div class="rating"><i>⭐</i> 4.9 (4,128 ratings)</div>
+                    <div class="price free-price">FREE</div>
+                  </div>
+                  <div class="course-info">
+                    <div>8.5 hrs • 112 lectures • All Levels</div>
+                  </div>
+                  <div class="course-progress">
+                    <span>92% Complete</span>
+                    <div class="progress-fill" style="width: 92%"></div>
+                  </div>
+                  <button class="btn primary course-cta">
+                    Continue Course
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- COBALT STRIKE -->
+            <div class="course-card" data-category="redteam">
+              <div class="course-3d-container">
+                <div class="course-3d-card">
+                  <div class="course-header">
+                    <div class="course-icon">⚔️</div>
+                    <div class="course-badge updated">Updated 2026</div>
+                  </div>
+                  <div class="instructor">by RedTeam Elite</div>
+                  <div class="course-meta">
+                    <div class="rating"><i>⭐</i> 4.7 (892 ratings)</div>
+                    <div class="price">
+                      <span class="old-price">₹15,999</span>
+                      <span class="new-price">₹4,999</span>
+                    </div>
+                  </div>
+                  <div class="course-info">
+                    <div>22.1 hrs • 289 lectures • Advanced</div>
+                  </div>
+                  <div class="course-progress">
+                    <span>23% Complete</span>
+                    <div class="progress-fill" style="width: 23%"></div>
+                  </div>
+                  <button class="btn primary course-cta">Start Course</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- CLOUD SECURITY -->
+            <div class="course-card" data-category="cloud">
+              <div class="course-3d-container">
+                <div class="course-3d-card">
+                  <div class="course-header">
+                    <div class="course-icon">☁️</div>
+                  </div>
+                  <div class="instructor">by Cloud Hacker</div>
+                  <div class="course-meta">
+                    <div class="rating"><i>⭐</i> 4.6 (1,456 ratings)</div>
+                    <div class="price">
+                      <span class="old-price">₹11,999</span>
+                      <span class="new-price">₹3,199</span>
+                    </div>
+                  </div>
+                  <div class="course-info">
+                    <div>15.8 hrs • 198 lectures • Intermediate</div>
+                  </div>
+                  <div class="course-progress">
+                    <span>0% Complete</span>
+                    <div class="progress-fill" style="width: 0%"></div>
+                  </div>
+                  <button class="btn primary course-cta">Enroll Now</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- 🔥 HACKING LABS SECTION - TryHackMe STYLE (COMPLETE) -->
+      <section id="labs" class="section">
+        <div class="container">
+          <h2 class="section-title">⚗️ Hacking Labs</h2>
+          <p class="section-subtitle">
+            Browser-based cybersecurity labs • No setup required • Real
+            vulnerabilities
+          </p>
+
+          <!-- FILTER BUTTONS -->
+          <div class="courses-filter">
+            <button class="filter-btn active" data-filter="all">
+              All Labs
+            </button>
+            <button class="filter-btn" data-filter="web">Web</button>
+            <button class="filter-btn" data-filter="network">Network</button>
+            <button class="filter-btn" data-filter="linux">Linux</button>
+            <button class="filter-btn" data-filter="ctf">CTF</button>
+            <button class="filter-btn" data-filter="forensic">Forensic</button>
+          </div>
+
+          <div class="labs-grid">
+            <!-- WEB VULN LAB 1 -->
+            <div class="lab-card" data-category="web">
+              <div class="lab-header">
+                <div class="lab-icon">🌐</div>
+                <div class="lab-badge easy">Easy</div>
+              </div>
+              <h3>DVWA - SQL Injection</h3>
+              <p>
+                Practice SQL injection attacks on vulnerable web app. Multiple
+                bypass techniques.
+              </p>
+              <div class="lab-stats">
+                <span>⭐ 4.8</span>
+                <span>2.5h</span>
+                <span>1,247 attempts</span>
+              </div>
+              <div class="lab-tasks">
+                <div class="task-item complete">Union SQLi</div>
+                <div class="task-item">Blind SQLi</div>
+                <div class="task-item">Time-based</div>
+              </div>
+              <button class="btn primary lab-start">Launch Lab</button>
+            </div>
+
+            <!-- WEB VULN LAB 2 -->
+            <div class="lab-card" data-category="web">
+              <div class="lab-header">
+                <div class="lab-icon">🔓</div>
+                <div class="lab-badge medium">Medium</div>
+              </div>
+              <h3>XSS Playground</h3>
+              <p>
+                Cross-Site Scripting attacks - Reflected, Stored, DOM-based XSS
+                exploitation.
+              </p>
+              <div class="lab-stats">
+                <span>⭐ 4.7</span>
+                <span>3.2h</span>
+                <span>987 attempts</span>
+              </div>
+              <div class="lab-tasks">
+                <div class="task-item complete">Reflected XSS</div>
+                <div class="task-item">Stored XSS</div>
+                <div class="task-item">DOM XSS</div>
+              </div>
+              <button class="btn primary lab-start">Launch Lab</button>
+            </div>
+
+            <!-- LINUX PRIVILEGE ESCALATION -->
+            <div class="lab-card" data-category="linux">
+              <div class="lab-header">
+                <div class="lab-icon">🐧</div>
+                <div class="lab-badge hard">Hard</div>
+              </div>
+              <h3>Linux Privesc</h3>
+              <p>
+                Privilege escalation techniques - SUID, Cron jobs, Docker
+                escapes, Kernel exploits.
+              </p>
+              <div class="lab-stats">
+                <span>⭐ 4.9</span>
+                <span>4.1h</span>
+                <span>456 attempts</span>
+              </div>
+              <div class="lab-tasks">
+                <div class="task-item">SUID Abuse</div>
+                <div class="task-item">Cron Jobs</div>
+                <div class="task-item complete">Kernel Exploit</div>
+              </div>
+              <button class="btn primary lab-start">Launch Lab</button>
+            </div>
+
+            <!-- WEB SHELL UPLOAD -->
+            <div class="lab-card" data-category="web">
+              <div class="lab-header">
+                <div class="lab-icon">📁</div>
+                <div class="lab-badge easy">Easy</div>
+              </div>
+              <h3>File Upload Vuln</h3>
+              <p>
+                Bypass file upload restrictions and achieve RCE through webshell
+                upload.
+              </p>
+              <div class="lab-stats">
+                <span>⭐ 4.6</span>
+                <span>1.8h</span>
+                <span>2,134 attempts</span>
+              </div>
+              <div class="lab-tasks">
+                <div class="task-item complete">Magic Bytes</div>
+                <div class="task-item">Double Ext</div>
+                <div class="task-item">Content-Type</div>
+              </div>
+              <button class="btn primary lab-start">Launch Lab</button>
+            </div>
+
+            <!-- METASPLOIT BASICS -->
+            <div class="lab-card" data-category="network">
+              <div class="lab-header">
+                <div class="lab-icon">🎯</div>
+                <div class="lab-badge medium">Medium</div>
+              </div>
+              <h3>Metasploit Mastery</h3>
+              <p>
+                Complete Metasploit workflow - Nmap → Exploit → Meterpreter →
+                Post-exploitation.
+              </p>
+              <div class="lab-stats">
+                <span>⭐ 4.8</span>
+                <span>3.5h</span>
+                <span>1,892 attempts</span>
+              </div>
+              <div class="lab-tasks">
+                <div class="task-item complete">MS17-010</div>
+                <div class="task-item">EternalBlue</div>
+                <div class="task-item">Post-Exploitation</div>
+              </div>
+              <button class="btn primary lab-start">Launch Lab</button>
+            </div>
+
+            <!-- BURP SUITE LAB -->
+            <div class="lab-card" data-category="web">
+              <div class="lab-header">
+                <div class="lab-icon">🐝</div>
+                <div class="lab-badge medium">Medium</div>
+              </div>
+              <h3>Burp Suite Pro</h3>
+              <p>
+                Intercept, Repeater, Intruder, Scanner - Complete Burp Suite
+                workflow.
+              </p>
+              <div class="lab-stats">
+                <span>⭐ 4.9</span>
+                <span>2.8h</span>
+                <span>3,456 attempts</span>
+              </div>
+              <div class="lab-tasks">
+                <div class="task-item">Traffic Intercept</div>
+                <div class="task-item complete">Intruder Attack</div>
+                <div class="task-item">Race Condition</div>
+              </div>
+              <button class="btn primary lab-start">Launch Lab</button>
+            </div>
+
+            <!-- ACTIVE DIRECTORY -->
+            <div class="lab-card" data-category="network">
+              <div class="lab-header">
+                <div class="lab-icon">🏢</div>
+                <div class="lab-badge hard">Hard</div>
+              </div>
+              <h3>Active Directory</h3>
+              <p>
+                AD exploitation chain - Kerberoasting, AS-REP Roasting, DCSync,
+                Golden Ticket.
+              </p>
+              <div class="lab-stats">
+                <span>⭐ 4.9</span>
+                <span>5.2h</span>
+                <span>234 attempts</span>
+              </div>
+              <div class="lab-tasks">
+                <div class="task-item">BloodHound</div>
+                <div class="task-item">Kerberoasting</div>
+                <div class="task-item">DA Compromise</div>
+              </div>
+              <button class="btn primary lab-start">Launch Lab</button>
+            </div>
+
+            <!-- FORENSICS -->
+            <div class="lab-card" data-category="forensic">
+              <div class="lab-header">
+                <div class="lab-icon">🔍</div>
+                <div class="lab-badge medium">Medium</div>
+              </div>
+              <h3>Memory Forensics</h3>
+              <p>
+                Volatility analysis - Process injection, hidden processes,
+                registry analysis.
+              </p>
+              <div class="lab-stats">
+                <span>⭐ 4.7</span>
+                <span>2.1h</span>
+                <span>678 attempts</span>
+              </div>
+              <div class="lab-tasks">
+                <div class="task-item complete">Process List</div>
+                <div class="task-item">Network Connections</div>
+                <div class="task-item">Injected Code</div>
+              </div>
+              <button class="btn primary lab-start">Launch Lab</button>
+            </div>
+
+            <!-- CTF CHALLENGE -->
+            <div class="lab-card" data-category="ctf">
+              <div class="lab-header">
+                <div class="lab-icon">🏆</div>
+                <div class="lab-badge hard">Hard</div>
+              </div>
+              <h3>CTF Challenge</h3>
+              <p>
+                Multi-stage CTF - Steganography → Reverse Engineering → Buffer
+                Overflow → Root.
+              </p>
+              <div class="lab-stats">
+                <span>⭐ 4.9</span>
+                <span>6.8h</span>
+                <span>123 attempts</span>
+              </div>
+              <div class="lab-tasks">
+                <div class="task-item">Flag 1/4</div>
+                <div class="task-item">Flag 2/4</div>
+                <div class="task-item">Flag 3/4</div>
+              </div>
+              <button class="btn primary lab-start">Start CTF</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 🔥 SERVICES SECTION - UPDATE THIS IN YOUR HTML -->
+      <section id="services" class="section">
+        <div class="container">
+          <h2 class="section-title">🚀 Elite Cyber Services</h2>
+          <p class="section-subtitle">
+            Professional penetration testing & cybersecurity solutions for
+            businesses
+          </p>
+
+          <div class="services-grid">
+            <!-- Penetration Testing -->
+            <div class="service-card featured">
+              <div class="service-badge">🔥 MOST POPULAR</div>
+              <div class="service-icon">🛡️</div>
+              <h3>Penetration Testing</h3>
+              <p>
+                Full-scope ethical hacking simulations across web apps,
+                networks, APIs, and cloud infrastructure.
+              </p>
+              <ul class="service-features">
+                <li><i>✅</i>Web Application Testing (OWASP Top 10)</li>
+                <li><i>✅</i>Network Vulnerability Assessment</li>
+                <li><i>✅</i>API Security Testing</li>
+                <li><i>✅</i>Detailed Exploit Reports</li>
+                <li><i>✅</i>Remediation Guidelines</li>
+              </ul>
+              <div class="btn primary btn-full">Start Pentest →</div>
+            </div>
+
+            <!-- Red Team -->
+            <div class="service-card">
+              <div class="service-icon">🎭</div>
+              <h3>Red Team Operations</h3>
+              <p>
+                Advanced adversary simulation with real-world attack scenarios
+                and persistence techniques.
+              </p>
+              <ul class="service-features">
+                <li><i>✅</i>Social Engineering (Phishing/Vishing)</li>
+                <li><i>✅</i>Physical Security Testing</li>
+                <li><i>✅</i>Advanced Persistence</li>
+                <li><i>✅</i>Lateral Movement Simulation</li>
+                <li><i>✅</i>C2 Infrastructure Evasion</li>
+              </ul>
+            </div>
+
+            <!-- Security Training -->
+            <div class="service-card">
+              <div class="service-icon">📚</div>
+              <h3>Custom Security Training</h3>
+              <p>
+                Hands-on cybersecurity training for developers, sysadmins, and
+                security teams.
+              </p>
+              <ul class="service-features">
+                <li><i>✅</i>Burp Suite Professional</li>
+                <li><i>✅</i>Kali Linux Mastery</li>
+                <li><i>✅</i>Cobalt Strike Training</li>
+                <li><i>✅</i>Custom Payload Development</li>
+                <li><i>✅</i>Certification Prep</li>
+              </ul>
+            </div>
+
+            <!-- Incident Response -->
+            <div class="service-card">
+              <div class="service-icon">⚡</div>
+              <h3>Incident Response</h3>
+              <p>
+                24/7 rapid response for ransomware, data breaches, and critical
+                security incidents.
+              </p>
+              <ul class="service-features">
+                <li><i>✅</i>4-Hour Response SLA</li>
+                <li><i>✅</i>Forensic Analysis</li>
+                <li><i>✅</i>Breach Containment</li>
+                <li><i>✅</i>Root Cause Analysis</li>
+                <li><i>✅</i>Post-Incident Review</li>
+              </ul>
+            </div>
+
+            <!-- Custom Tools -->
+            <div class="service-card">
+              <div class="service-icon">⚙️</div>
+              <h3>Custom Tool Development</h3>
+              <p>
+                Bespoke cybersecurity tools, exploits, and automation
+                frameworks.
+              </p>
+              <ul class="service-features">
+                <li><i>✅</i>Custom C2 Frameworks</li>
+                <li><i>✅</i>Payload Generators</li>
+                <li><i>✅</i>Reconnaissance Tools</li>
+                <li><i>✅</i>Exploitation Modules</li>
+                <li><i>✅</i>Evade Detection</li>
+              </ul>
+            </div>
+
+            <!-- Bug Bounty -->
+            <div class="service-card">
+              <div class="service-icon">💰</div>
+              <h3>Bug Bounty Programs</h3>
+              <p>
+                Managed bug bounty programs with elite researchers and
+                guaranteed results.
+              </p>
+              <ul class="service-features">
+                <li><i>✅</i>Private Researcher Network</li>
+                <li><i>✅</i>Critical Bug Guaranteed</li>
+                <li><i>✅</i>Scope Expansion</li>
+                <li><i>✅</i>Automated Triage</li>
+                <li><i>✅</i>ROI Tracking</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Dashboard - MOVED FROM NAVBAR -->
+      <section id="dashboard" class="section">
+        <h2 class="section-title">Agent Dashboard</h2>
+        <div class="dashboard-container">
+          <div class="progress-overview">
+            <div class="progress-card">
+              <div class="progress-header">
+                <i class="fas fa-fire" style="color: #00ff88"></i>
+                <h3>CEH v12</h3>
+                <span>65% Complete</span>
+              </div>
+              <div class="progress-bar">
+                <div class="progress-fill" style="width: 65%"></div>
+              </div>
+              <button class="btn primary" onclick="startCourse('ceh')">
+                <i class="fas fa-play"></i> Continue Training
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Certifications -->
+      <section id="certifications" class="section">
+        <h2 class="section-title">Certifications</h2>
+        <div class="certs-grid">
+          <div class="cert-card unlocked">
+            <i class="fas fa-lock-open cert-lock"></i>
+            <div class="cert-progress">65%</div>
+            <h4>CEH v12 Certified</h4>
+            <button class="btn primary" onclick="downloadCert('ceh')">
+              Download Certificate
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Login Modal -->
+      <div id="loginModal" class="modal">
+        <div class="modal-content">
+          <div class="modal-header">
+            <i class="fas fa-lock" style="font-size: 4rem; color: #00ff88"></i>
+            <h2>Agent Authentication</h2>
+          </div>
+          <form id="loginForm" class="login-form">
+            <input
+              type="email"
+              id="loginEmail"
+              placeholder="Agent Email"
+              required
+            />
+            <input
+              type="password"
+              id="loginPassword"
+              placeholder="Access Code"
+              required
+            />
+            <button type="submit" class="btn primary btn-full btn-glow">
+              <i class="fas fa-lock-open"></i> Authenticate
+            </button>
+          </form>
+          <div class="demo-login">
+            <a href="#" onclick="demoLogin(event)">Try Demo Access</a>
+          </div>
+        </div>
+      </div>
     </div>
 
     <script src="script.js"></script>
-</body>
-
+  </body>
 </html>
