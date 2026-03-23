@@ -59,11 +59,14 @@ body {
     text-shadow: 0 0 20px rgba(0, 255, 136, 0.5);
 }
 
+/* .nav-desktop{
+    display: flex;
+    justify-content: center;
+} */
+
 .nav-desktop {
     display: flex;
-    gap: clamp(0.5rem, 2vw, 1.5rem);
-    flex: 1;
-    justify-content: center;
+    gap: 10px;
 }
 
 .nav-link {
@@ -72,11 +75,8 @@ body {
     font-weight: 500;
     display: flex;
     align-items: center;
-    gap: 8px;
-    padding: 0.5rem 1.2rem;
     border-radius: 20px;
     transition: all 0.3s;
-    font-size: clamp(0.85rem, 2.5vw, 1rem);
 }
 
 .nav-link:hover,
@@ -187,7 +187,7 @@ body {
     top: 0;
     left: 0;
     transition: all 0.5s ease;
-    
+
 }
 
 .section.active {
@@ -1582,19 +1582,17 @@ body {
 /* ================================
    DARK BYTE HUB - CLEAN NAVBAR
 ================================ */
-
-/* HEADER */
+/* HEADER FIX */
 #header {
     position: fixed;
     top: 0;
     width: 100%;
     background: rgba(5, 10, 24, 0.98);
     backdrop-filter: blur(20px);
-    padding: 1rem 5%;
+    padding: 0.8rem 4%;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 1rem;
     z-index: 1000;
 }
 
@@ -1602,265 +1600,165 @@ body {
 .logo-glow {
     display: flex;
     align-items: center;
-    gap: 20px;
-    font-family: "Orbitron", monospace;
-    font-size: 1.4rem;
-    color: var(--primary);
-    font-weight: 700;
-    text-shadow: 0 0 20px rgba(0, 255, 136, 0.5);
+    gap: 10px;
+    font-size: 1.2rem;
     white-space: nowrap;
 }
 
-/* DESKTOP NAV */
+/* NAVBAR FIX */
 .nav-desktop {
     display: flex;
-    gap: 1.5rem;
-    flex: 1;
+    align-items: center;
     justify-content: center;
+    gap: 8px;
+    /* 🔥 spacing between items */
+    flex-wrap: nowrap;
+    /* keep single line */
+    overflow: hidden;
+    /* prevent breaking */
 }
 
+/* NAV LINKS FIX */
 .nav-link {
-    color: var(--text-secondary);
-    text-decoration: none;
-    font-weight: 500;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 0.6rem 1.4rem;
-    border-radius: 20px;
-    transition: 0.3s;
+    padding: 0.45rem 0.9rem;
+    /* 🔥 reduced padding */
+    font-size: 0.9rem;
+    /* 🔥 compact text */
     white-space: nowrap;
 }
 
-.nav-link:hover,
-.nav-link.active {
-    color: var(--primary);
-    background: rgba(0, 255, 136, 0.1);
+/* OPTIONAL: shrink on medium screens */
+@media (max-width: 1200px) {
+    .nav-link {
+        padding: 0.4rem 0.7rem;
+        font-size: 0.85rem;
+    }
 }
 
-.login-trigger::after {
-    content: "🔒";
-    margin-left: 5px;
-    font-size: 0.9rem;
-}
-
-/* HEADER STATS */
-.header-stats {
-    display: flex;
-    gap: 1rem;
-    font-size: 0.85rem;
-}
-
-/* USER PROFILE */
-.user-profile {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-}
-
-/* HAMBURGER */
-.menu-toggle {
-    display: none;
-    flex-direction: column;
-    gap: 4px;
-    cursor: pointer;
-}
-
-.menu-toggle span {
-    width: 25px;
-    height: 3px;
-    background: var(--primary);
-    border-radius: 2px;
-    transition: 0.3s;
-}
-
-/* MOBILE MENU */
-.mobile-menu {
-    position: fixed;
-    top: 0;
-    right: -100%;
-    width: 100%;
-    height: 100vh;
-    background: rgba(5, 10, 24, 0.98);
-    backdrop-filter: blur(20px);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: right 0.4s;
-    z-index: 999;
-}
-
-.mobile-menu.active {
-    right: 0;
-}
-
-.mobile-nav {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-    font-size: 1.4rem;
-    text-align: center;
-}
-
-.mobile-nav .nav-link {
-    padding: 1rem 2rem;
-}
-
-/* =========================
-   TABLET
-========================= */
-
+/* TABLET FIX */
 @media (max-width: 1024px) {
     .nav-desktop {
-        gap: 1rem;
-    }
-
-    .nav-link {
-        padding: 0.5rem 1rem;
+        gap: 5px;
     }
 }
 
-/* =========================
-   MOBILE
-========================= */
-
+/* MOBILE */
 @media (max-width: 768px) {
     .nav-desktop {
-        display: none;
-    }
-
-    .header-stats {
         display: none;
     }
 
     .menu-toggle {
         display: flex;
     }
-
-    #header {
-        padding: 0.8rem 4%;
-    }
+}
 }
 
-/* SMALL MOBILE */
-
-@media (max-width: 480px) {
-    #header {
-        padding: 10px 3%;
-        display: flex;
-        flex-direction: row;
-    }
-
-    .logo-glow {
-        font-size: 10px;
-    }
-
-}
 /* ================= DASHBOARD HOVER FX ================= */
 
 .dashboard-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 25px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 25px;
 }
 
 .progress-card {
-  background: linear-gradient(145deg, #0b0f14, #111827);
-  border: 1px solid rgba(0, 255, 136, 0.15);
-  border-radius: 18px;
-  padding: 25px;
-  transition: all 0.35s ease;
-  position: relative;
-  overflow: hidden;
+    background: linear-gradient(145deg, #0b0f14, #111827);
+    border: 1px solid rgba(0, 255, 136, 0.15);
+    border-radius: 18px;
+    padding: 25px;
+    transition: all 0.35s ease;
+    position: relative;
+    overflow: hidden;
 }
 
 .progress-card::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at top left, rgba(0,255,136,0.15), transparent 60%);
-  opacity: 0;
-  transition: opacity 0.4s ease;
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at top left, rgba(0, 255, 136, 0.15), transparent 60%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
 }
 
 .progress-card:hover::before {
-  opacity: 1;
+    opacity: 1;
 }
 
 .progress-card:hover {
-  transform: translateY(-8px) scale(1.02);
-  box-shadow: 0 20px 45px rgba(0, 255, 136, 0.25);
-  border-color: #00ff88;
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 20px 45px rgba(0, 255, 136, 0.25);
+    border-color: #00ff88;
 }
 
 .progress-card h3 {
-  margin-bottom: 12px;
-  color: #00ff88;
+    margin-bottom: 12px;
+    color: #00ff88;
 }
+
 /* ================= CERTIFICATION HOVER FX ================= */
 
 .cert-card {
-  background: linear-gradient(160deg, #0a0f14, #0f172a);
-  border: 1px solid rgba(0, 255, 136, 0.18);
-  border-radius: 18px;
-  padding: 25px;
-  text-align: center;
-  transition: all 0.35s ease;
-  position: relative;
-  overflow: hidden;
+    background: linear-gradient(160deg, #0a0f14, #0f172a);
+    border: 1px solid rgba(0, 255, 136, 0.18);
+    border-radius: 18px;
+    padding: 25px;
+    text-align: center;
+    transition: all 0.35s ease;
+    position: relative;
+    overflow: hidden;
 }
 
 .cert-card::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(120deg, transparent, rgba(0,255,136,0.15), transparent);
-  transform: translateX(-100%);
-  transition: transform 0.6s ease;
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(120deg, transparent, rgba(0, 255, 136, 0.15), transparent);
+    transform: translateX(-100%);
+    transition: transform 0.6s ease;
 }
 
 .cert-card:hover::after {
-  transform: translateX(100%);
+    transform: translateX(100%);
 }
 
 .cert-card:hover {
-  transform: translateY(-10px) scale(1.03);
-  box-shadow: 0 25px 55px rgba(0, 255, 136, 0.35);
-  border-color: #00ff88;
+    transform: translateY(-10px) scale(1.03);
+    box-shadow: 0 25px 55px rgba(0, 255, 136, 0.35);
+    border-color: #00ff88;
 }
 
 .cert-card.unlocked .cert-lock {
-  color: #00ff88;
+    color: #00ff88;
 }
 
 .cert-card.locked {
-  opacity: 0.55;
-  filter: grayscale(0.4);
+    opacity: 0.55;
+    filter: grayscale(0.4);
 }
+
 /* ===============================
    FULL BODY MICRO BUBBLE BG
 ================================ */
 
 #microBubbleBg {
-  position: fixed;
-  inset: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: -10;
-  pointer-events: none;
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -10;
+    pointer-events: none;
 }
 
 /* DARK BACK THEME */
 body {
-  background: radial-gradient(
-      circle at top,
-      #04110c,
-      #020807 60%,
-      #000
-  );
+    background: radial-gradient(circle at top,
+            #04110c,
+            #020807 60%,
+            #000);
 }
 
-.hero{
+.hero {
     display: flex;
     justify-content: center;
     align-items: center;
